@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color1"
-    tools:context=".RegisterActivity">
+    tools:context=".LoginActivity">
 
     <include
         android:id="@+id/toolbar"
@@ -23,18 +23,9 @@
             android:layout_marginTop="5dp"
             android:fontFamily="sans-serif-black"
             android:gravity="center"
-            android:text="Create a New Account"
+            android:text="Login"
             android:textColor="@color/color2"
             android:textSize="25sp" />
-
-        <EditText
-            android:id="@+id/username"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:hint="Username"
-            android:textColor="@color/color2"
-            android:textColorHint="@color/color2" />
 
         <EditText
             android:id="@+id/email"
@@ -56,13 +47,13 @@
             android:textColorHint="@color/color2" />
 
         <Button
-            android:id="@+id/register"
-            android:onClick="RegisterButton"
+            android:id="@+id/btnLogin"
+            android:onClick="login_User"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:background="@color/color2"
-            android:text="Register"
+            android:text="Login"
             android:textColor="@color/color3"
             android:textStyle="bold" />
 
