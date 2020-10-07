@@ -14,6 +14,19 @@ import pl.droidsonroids.gif.GifImageView;
 public class StartActivity extends AppCompatActivity {
 
     FirebaseUser firebaseUser;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
+        if(firebaseUser!=null){
+
+            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+            finish();
+        }
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,12 +34,6 @@ public class StartActivity extends AppCompatActivity {
 
         GifImageView gif=findViewById(R.id.gifImage);
         gif.setBackgroundResource(R.drawable.welcome);
-        firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
-        if(firebaseUser!=null){
-
-            startActivity(new Intent(getApplicationContext(),MainActivity.class));
-            finish();
-        }
 
     }
 

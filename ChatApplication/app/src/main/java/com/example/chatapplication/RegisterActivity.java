@@ -52,7 +52,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void allFindViewByIds() {
-        toolbar=findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         username = findViewById(R.id.username);
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
@@ -60,6 +60,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void register(final String username, String email, String password) {
+
 
         auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -79,20 +80,22 @@ public class RegisterActivity extends AppCompatActivity {
                             databaseReference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
-
                                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK); //Registration Error
                                     startActivity(intent);
                                     finish();
                                 }
                             });
                         } else {
+
                             Toast.makeText(getApplicationContext(), "You can't register with this email", Toast.LENGTH_SHORT).show();
 
                         }
+
                     }
                 });
     }
+
     public static boolean isEmailValid(String email) {
         String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
         Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
@@ -105,12 +108,12 @@ public class RegisterActivity extends AppCompatActivity {
         String txtUsername = username.getText().toString();
         String txtEmail = email.getText().toString();
         String txtPassword = password.getText().toString();
-        if (TextUtils.isEmpty(txtUsername) || TextUtils.isEmpty(txtEmail) || TextUtils.isEmpty(txtPassword)){
-           Snackbar.make(view,"All fields required", BaseTransientBottomBar.LENGTH_SHORT).show();
-        }else if(txtPassword.length()<6){
-            Snackbar.make(view,"Password Must Be Atleast 6 Chracters",BaseTransientBottomBar.LENGTH_SHORT).show();
-        }else{
-            register(txtUsername,txtEmail,txtPassword);
+        if (TextUtils.isEmpty(txtUsername) || TextUtils.isEmpty(txtEmail) || TextUtils.isEmpty(txtPassword)) {
+            Snackbar.make(view, "All fields required", BaseTransientBottomBar.LENGTH_SHORT).show();
+        } else if (txtPassword.length() < 6) {
+            Snackbar.make(view, "Password Must Be Atleast 6 Chracters", BaseTransientBottomBar.LENGTH_SHORT).show();
+        } else {
+            register(txtUsername, txtEmail, txtPassword);
         }
     }
 }
