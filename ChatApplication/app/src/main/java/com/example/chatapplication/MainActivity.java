@@ -29,6 +29,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 import Fragments.ChatsFragment;
+import Fragments.ProfileFragment;
 import Fragments.UsersFragment;
 import Model.User;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -82,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
 
         viewPagerAdapter.addFragment(new ChatsFragment(),"Chats");
         viewPagerAdapter.addFragment(new UsersFragment(),"Users");
+        viewPagerAdapter.addFragment(new ProfileFragment(),"Profile");
 
         viewPager.setAdapter(viewPagerAdapter);
 
